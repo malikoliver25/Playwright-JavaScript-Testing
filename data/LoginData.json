@@ -1,0 +1,64 @@
+{
+  "invalidCredentials": [
+    { 
+      "desc": "SQL Injection", 
+      "user": "tomsmith", 
+      "pass": "' OR '1'='1", 
+      "expected": "invalid!" 
+    },
+    { 
+      "desc": "Empty Password", 
+      "user": "tomsmith", 
+      "pass": "", 
+      "expected": "invalid!" 
+    },
+    { 
+      "desc": "Empty Username", 
+      "user": "", 
+      "pass": "SuperSecretPassword!", 
+      "expected": "invalid!" 
+    },
+    { 
+      "desc": "Both Empty", 
+      "user": "", 
+      "pass": "", 
+      "expected": "invalid!" 
+    },
+    {
+      "desc": "Special Characters", 
+      "user": "!  @#$%^&*()", 
+      "pass": "!  @#$%^&*()", 
+      "expected": "invalid!" 
+    },
+    {
+      "desc": "xss Attack", 
+      "user": "<script>alert('XSS')</script>", 
+      "pass": "<script>alert('XSS')</script>", 
+      "expected": "invalid!" 
+    },
+    {
+      "desc": "css Injection", 
+      "user": "<style>body { background-color: red; }</style>", 
+      "pass": "<style>body { background-color: red; }</style>", 
+      "expected": "invalid!"    
+    },
+    {
+      "desc": "Long Strings", 
+      "user": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 
+      "pass": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", 
+      "expected": "invalid!"    
+    },
+    {
+      "desc": "Unicode Characters", 
+      "user": "用户", 
+      "pass": "密码", 
+      "expected": "invalid!"    
+    },
+    {
+      "desc": "SQL Injection 2", 
+      "user": "admin' --", 
+      "pass": "anything", 
+      "expected": "invalid!"
+    }
+  ]
+}
